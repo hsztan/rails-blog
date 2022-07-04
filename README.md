@@ -1,24 +1,54 @@
-# README
+# Blog Posts
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> A Blog Posts Rails App that can handle users, likes and comments.
 
-Things you may want to cover:
+## Built With
 
-* Ruby version
+- Ruby
+- Ruby on Rails
+- Github
 
-* System dependencies
+## Getting Started
 
-* Configuration
+To get a local copy up and running follow these simple example steps.
 
-* Database creation
+### Prerequisites
 
-* Database initialization
+- Have a version of Ruby installed in your local environment.
 
-* How to run the test suite
+### Setup
 
-* Services (job queues, cache servers, search engines, etc.)
+- Clone the repo.
 
-* Deployment instructions
+### Run
 
-* ...
+- On your local director run: `rails s`
+
+## Author
+
+👤 **Henry Sztanski**
+
+- GitHub: [@hsztan](https://github.com/hsztan)
+- Twitter: [@hsztanski](https://github.com/hsztan)
+- LinkedIn: [@henry-nawrocki](https://linkedin.com/in/henry-nawrocki)
+
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## Acknowledgments
+
+- Hat tip to anyone whose code was used
+- Inspiration
+- etc
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
