@@ -6,8 +6,8 @@ RSpec.describe User, type: :model do
   before { subject.save }
 
   it 'title should be present' do
-    subject.name = nil
-    expect(subject).to_not be_valid
+    p subject
+    expect(subject).to be_valid
   end
 
   it 'posts_counter should be integer' do
