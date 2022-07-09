@@ -9,7 +9,6 @@ RSpec.describe 'Users', type: :request do
 
     it 'renders the index template' do
       get users_path
-      p render_template 'index'
       expect(response).to render_template('index')
     end
 
@@ -19,7 +18,7 @@ RSpec.describe 'Users', type: :request do
     end
   end
 
-  describe 'GET /user/:id' do
+  describe 'GET /users/:id' do
     it 'response for show action status is correct' do
       get user_path(1)
       expect(response).to have_http_status(200)
