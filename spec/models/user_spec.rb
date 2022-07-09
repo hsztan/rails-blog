@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
   before { subject.save }
 
   it 'title should be present' do
-    p subject
     expect(subject).to be_valid
   end
 
