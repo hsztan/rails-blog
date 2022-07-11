@@ -6,7 +6,7 @@
       </div>
       <div class="user--name">
         <%=link_to user.name, user_path(user), class: 'name'%>
-        <%=link_to "Number of posts: #{user.posts_counter}", user_posts_path(user), class: 'posts-num'%>
+        <%=link_to "Number of posts: #{user.posts_counter}",          user_posts_path(user), class: 'posts-num'%>
       </div>
     </div>
   <% end %>
