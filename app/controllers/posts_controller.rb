@@ -8,5 +8,7 @@ class PostsController < ApplicationController
     @posts = @user.posts.offset(@page * POSTS_PER_PAGE).limit(POSTS_PER_PAGE)
   end
 
-  def show; end
+  def show
+    @post = Post.find(params[:id])
+  end
 end
