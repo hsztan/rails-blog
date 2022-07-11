@@ -7,7 +7,17 @@
     <%=link_to "Number of posts: #{@user.posts_counter}",          user_posts_path(@user), class: 'posts-num'%>
   </div>
 </div>
-<%@user.posts.each do |post|%>
-  <h3> <%=post.title%> </h3>
-  <p> <%=post.text%> </p>
+<div class="user--bio">
+  <h3>Bio</h3>
+  <p><%= @user.bio %></p>
+</div>
+<%@user.recent_posts.each.with_index(1) do |post, idx|%>
+  <div class="user--post">
+    <h3><%= post.title %></h3>
+    <p><%= post.text.slice(0...50) + '...' %></p>
+    <p class='count'>Comments <%=post.comments_counter%>, Likes <%=post.likes_counter%></p>
+  </div>
 <%end%>
+<div class="btn">
+  <%=link_to "See all posts", user_post_path(@user), class: 'show-posts'%>
+</div>
