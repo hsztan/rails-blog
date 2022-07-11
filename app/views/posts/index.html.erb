@@ -7,7 +7,7 @@
     <%=link_to "Number of posts: #{@user.posts_counter}",          user_posts_path(@user), class: 'posts-num'%>
   </div>
 </div>
-<%@user.posts.each do |post, idx|%>
+<%@posts.each do |post, idx|%>
   <div class="user--post">
     <h3><%= post.title %></h3>
     <p><%= post.text.slice(0...50) + '...' %></p>
@@ -20,3 +20,8 @@
     </div>
   </div>
 <%end%>
+<div class="pagination">
+  <%=link_to "Previous Page", user_posts_path(@user, page: @page - 1)%>
+  <p><%=@page + 1%></p>
+  <%=link_to "Next Page", user_posts_path(@user, page: @page + 1)%>
+</div>
