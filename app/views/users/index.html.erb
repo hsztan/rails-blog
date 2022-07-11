@@ -1,1 +1,13 @@
-<h1>List of users</h1>
+<div class="user-list">
+  <% @users.each do |user| %>
+    <div class="user">
+      <div class="user--avatar">
+        <%=image_tag("https://robohash.org/#{user.id}.png", class: 'user--avatar', alt: 'user picture')%>
+      </div>
+      <div class="user--name">
+        <%=link_to user.name, user_path(user), class: 'name'%>
+        <%=link_to "Number of posts: #{user.posts_counter}",          user_posts_path(user), class: 'posts-num'%>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,1 +1,23 @@
-<h1>User XXXXX</h1>
+<div class="user">
+  <div class="user--avatar">
+    <%=image_tag("https://robohash.org/#{@user.id}.png", class: 'user--avatar', alt: 'user picture')%>
+  </div>
+  <div class="user--name">
+    <%=link_to @user.name, user_path(@user), class: 'name'%>
+    <%=link_to "Number of posts: #{@user.posts_counter}",          user_posts_path(@user), class: 'posts-num'%>
+  </div>
+</div>
+<div class="user--bio">
+  <h3>Bio</h3>
+  <p><%= @user.bio %></p>
+</div>
+<%@user.recent_posts.each.with_index(1) do |post, idx|%>
+  <div class="user--post">
+    <h3><%=link_to post.title, user_post_path(@user, post) %></h3>
+    <p><%= post.text.slice(0...50) + '...' %></p>
+    <p class='count'>Comments <%=post.comments_counter%>, Likes <%=post.likes_counter%></p>
+  </div>
+<%end%>
+<div class="btn">
+  <%=link_to "See all posts", user_posts_path(@user), class: 'show-posts'%>
+</div>

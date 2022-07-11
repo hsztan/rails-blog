@@ -1,1 +1,16 @@
-<h1>Post XXXX</h1>
+<div class="post">
+  <div class="post--content">
+    <h3><%=@post.title%> by <%=@post.user.name%> </h3>
+    <h4>Comments: <%=@post.comments_counter%>, Likes: <%=@post.likes_counter%></h4>
+    <p><%=@post.text%></p>
+  </div>
+  <div class="post--comments">
+    <h3>Comments</h3>
+    <%@post.comments.each do |comment|%>
+      <div class="comment">
+        <p><span><%=comment.user.name%></span>:&nbsp;<%=comment.text%></p>
+        <p></p>
+      </div>
+    <%end%>
+  </div>
+</div>
