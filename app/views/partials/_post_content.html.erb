@@ -1,0 +1,12 @@
+<div class="post--content">
+  <div class="post--title">
+    <h3><%=post.title%> by <%=post.user.name%></h3>
+    <%=form_with :url => user_post_path(user, post), :method => :post, :class => 'new-like' do |f|%>
+      <%= f.button nil, class: "button_green" do %>
+        <%= icon('fa-solid', 'thumbs-up', class: 'like')%>
+      <% end %>
+    <%end%>
+  </div>
+  <h4>Comments: <%=post.comments_counter%>, Likes: <%=post.likes_counter%></h4>
+  <p><%=post.text%></p>
+</div>
