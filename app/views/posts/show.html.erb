@@ -7,5 +7,9 @@
         <p><span><%=comment.user.name%></span>:&nbsp;<%=comment.text%></p>
       </div>
     <%end%>
+    <%=form_with :url => user_comments_path(@user, @post), :method => :post, :class => 'new-comment' do |f|%>
+      <%=f.text_field :text, placeholder: 'Comment', class: 'comment-text'%>
+      <%=f.submit 'Comment', class: 'comment-submit'%>
+    <%end%>
   </div>
 </div>
