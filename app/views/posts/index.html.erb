@@ -7,21 +7,13 @@
     <%=link_to "Number of posts: #{@user.posts_counter}",          user_posts_path(@user), class: 'posts-num'%>
   </div>
 </div>
-<%@posts.each do |post, idx|%>
-  <div class="user--post">
-    <h3><%=link_to post.title, user_post_path(@user, post) %></h3>
-    <p><%= post.text.slice(0...50) + '...' %></p>
-    <p class='count'>Comments <%=post.comments_counter%>, Likes <%=post.likes_counter%></p>
-    <div class="user--post--comments">
-      <h3>Comments</h3>
-      <%post.comments.each do |comment|%>
-        <p><%= comment.user.name %>: <%= comment.text %></p>
-      <%end%>
-    </div>
-  </div>
-<%end%>
+<%=render partial: 'partials/post_snippet', locals: {posts: @posts} %>
 <div class="pagination">
-  <%=link_to "Previous Page", user_posts_path(@user, page: @page - 1)%>
+  <div class="btn">
+    <%=link_to "Previous Page", user_posts_path(@user, page: @page - 1)%>
+  </div>
   <p><%=@page + 1%></p>
-  <%=link_to "Next Page", user_posts_path(@user, page: @page + 1)%>
+  <div class="btn">
+    <%=link_to "Next Page", user_posts_path(@user, page: @page + 1)%>
+  </div>
 </div>
