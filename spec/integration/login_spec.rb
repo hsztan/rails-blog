@@ -16,7 +16,7 @@ RSpec.describe 'Login', type: :system do
     expect(page).to have_content('Invalid username or password')
   end
 
-  it 'get a detailed error when clicking the submit button after filling in the usernamne and password with incorrect data' do
+  it 'get a detailed error when clicking the submit button after filling with incorrect data' do
     visit '/login'
     fill_in 'username', with: 'henry'
     fill_in 'password', with: 'henry'

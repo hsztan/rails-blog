@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe 'Post index', type: :system do
   it 'can see the users profile picture' do
-    user = User.create(name: 'henry', photo: '', bio: 'teacher from Poland')
+    User.create(name: 'henry', photo: '', bio: 'teacher from Poland')
     visit '/users'
     expect(page).to have_css('img')
   end
 
   it 'can see the users name' do
-    user = User.create(name: 'henry', photo: '', bio: 'teacher from Poland')
+    User.create(name: 'henry', photo: '', bio: 'teacher from Poland')
     visit '/users'
     expect(page).to have_content('henry')
   end
