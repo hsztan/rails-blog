@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     @page = params.fetch(:page, 0).to_i
     @page = 0 if @page.negative? || @page > (Post.count / POSTS_PER_PAGE)
     @user = User.find(params[:user_id])
-    @posts = @user.posts.offset(@page * POSTS_PER_PAGE).limit(POSTS_PER_PAGE)
+    @posts = @user.posts.includes(:comments).offset(@page * POSTS_PER_PAGE).limit(POSTS_PER_PAGE)
   end
 
   def show
