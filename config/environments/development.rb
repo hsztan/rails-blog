@@ -48,7 +48,11 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+  config.action_mailer.perform_deliveries = true
+
   config.action_mailer.perform_caching = false
+
+  config.action_mailer.delivery_method = :smtp
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
@@ -78,4 +82,19 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # Gmail SMTP settings for ActionMailer.
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'smtp.mailtrap.io' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    user_name:      '2c336ab673e7ac',
+    password:       '9aba1da8255694',
+    domain:         'mailtrap.io',
+    address:       'smtp.mailtrap.io',
+    port:          '25',
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 end
