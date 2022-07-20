@@ -12,7 +12,7 @@
     <div class="session-actions">
       <%if user_signed_in?%>
         <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: 'btn' %>
-        <%= button_to "Create Post", new_user_post_path, method: :get, class: 'btn' %>
+        <%= button_to "Create Post", new_user_post_path(current_user), method: :get, class: 'btn' %>
       <%else%>
         <%= button_to "Sign up", new_user_registration_path, method: :get, class: 'btn' %>
         <%= button_to "Log in", user_session_path, method: :get, class: 'btn' %>
