@@ -7,6 +7,6 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show] do
       resources :posts, only: [:index, :show, :new, :create, :destroy]
       post "/posts/:id/like" => "posts#like", as: :like
-      post "/posts/:id/comment" => "posts#comment", as: :comments
+      post "/posts/:id/comment" => "comments#create", as: :comments
   end
 end
