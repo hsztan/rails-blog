@@ -12,7 +12,6 @@ class Ability
       can :manage, Comment, user_id: user.id
       can :read, :all
       can :add, Comment
-      can [:update, :delete], Comment
     end
   end
 end
