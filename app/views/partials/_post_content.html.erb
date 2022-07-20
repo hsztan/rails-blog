@@ -9,4 +9,7 @@
   </div>
   <h4>Comments: <%=post.comments_counter%>, Likes: <%=post.likes_counter%></h4>
   <p><%=post.text%></p>
+  <% if can? :delete, post %>
+    <%= button_to "Delete Post", user_post_path(@user, post), method: :delete, class: 'btn delete-post'%>
+  <% end %>
 </div>

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource
   POSTS_PER_PAGE = 2
 
   def index
@@ -30,6 +31,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to user_posts_path(current_user)
+  end
+
   def like
     @post = Post.find(params[:id])
     Like.new(user: current_user, post: @post).save
@@ -38,8 +45,8 @@ class PostsController < ApplicationController
 
   def comment
     @post = Post.find(params[:id])
-    p params
     @comment = Comment.new(user: current_user, post: @post, text: params[:text])
+    authorize! :add, @comment
     @comment.save
     redirect_to user_posts_path(current_user)
   end
