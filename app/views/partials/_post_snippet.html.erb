@@ -3,7 +3,9 @@
     <h3><%=link_to post.title, user_post_path(@user, post) %></h3>
     <p><%= post.text.slice(0...50) + '...' %></p>
     <p class='count'>Comments <%=post.comments_counter%>, Likes <%=post.likes_counter%></p>
-    <%= button_to "Delete Post", user_post_path(@user, post), method: :delete, class: 'btn delete-post'%>
+    <% if can? :delete, post %>
+      <%= button_to "Delete Post", user_post_path(@user, post), method: :delete, class: 'btn delete-post'%>
+    <% end %>
     <div class="user--post--comments">
       <h3>Comments</h3>
       <%post.comments.each do |comment|%>

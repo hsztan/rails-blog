@@ -5,7 +5,9 @@
     <%@comments.each do |comment|%>
       <div class="comment">
         <p><span><%=comment.user.name%></span>:&nbsp;<%=comment.text%></p>
-        <%= button_to "Delete", user_post_comment_path(comment.user, @post, comment), method: :delete, class: 'btn delete-comment'%>
+        <% if can? :delete, comment %>
+          <%= button_to "Delete", user_post_comment_path(comment.user, @post, comment), method: :delete, class: 'btn delete-comment'%>
+        <% end %>
       </div>
     <%end%>
     <%=form_with :url => user_post_comments_path(@user, @post), :method => :post, :class => 'new-comment' do |f|%>
