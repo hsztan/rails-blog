@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   def index
     if current_user_id
       puts 'You made it'
-      render json: { posts: Post.all }, status: :ok
+      posts = Post.where(user_id: params[:user_id]).order(created_at: :desc)
+      render json: { posts: }, status: :ok
       return
     end
     @page = params.fetch(:page, 0).to_i
@@ -60,16 +61,4 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :text)
   end
 
-  private
-
-  def current_user_id
-    begin
-      token = request.headers["Authorization"]
-      decoded_array = JWT.decode(token.split[1], hmac_secret, true, { algorithm: 'HS256' })
-      payload = decoded_array.first
-    rescue #JWT::VerificationError
-      return nil
-    end
-    payload["user_id"]
-  end
 end
