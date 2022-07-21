@@ -13,8 +13,8 @@ Rails.application.routes.draw do
       post "/posts/:id/like" => "posts#like", as: :like
   end
   scope 'api' do
-    get '/posts/:id' => 'api/comments#index', as: :api_post_comments
-    post '/posts/:id' => 'api/comments#create', as: :api_post_comments_create
+    get '/posts/:id/comments' => 'api/comments#index', as: :api_post_comments
+    post '/posts/:id/comments' => 'api/comments#create', as: :api_post_comments_create
     resources :users, only: [] do
       get '/posts' => 'api/posts#index', as: :api_user_posts
     end

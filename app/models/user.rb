@@ -22,6 +22,6 @@ class User < ApplicationRecord
   end
 
   def authenticate(password)
-    self.valid_password?(password)
+    valid_password?(password)
   end
 end
