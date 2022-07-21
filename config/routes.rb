@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   end
   scope 'api' do
     resources :users, only: [] do
-      resources :posts, only: [:index] do
+      get '/posts' => 'api/posts#index'
+      scope :posts do
         resources :comments, only: [:index, :create]
       end
     end

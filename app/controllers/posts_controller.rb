@@ -3,12 +3,6 @@ class PostsController < ApplicationController
   POSTS_PER_PAGE = 2
 
   def index
-    if current_user_id
-      puts 'You made it'
-      posts = Post.where(user_id: params[:user_id]).order(created_at: :desc)
-      render json: { posts: }, status: :ok
-      return
-    end
     @page = params.fetch(:page, 0).to_i
     @page = 0 if @page.negative? || @page > (Post.count / POSTS_PER_PAGE)
     @user = User.find(params[:user_id])
