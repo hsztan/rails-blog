@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
 
   before_action :update_allowed_parameters, if: :devise_controller?
 
-  protected
-
   def token(user_id)
     payload = { user_id: user_id }
     JWT.encode(payload, hmac_secret, 'HS256')
@@ -21,7 +19,7 @@ class ApplicationController < ActionController::Base
   def current_user_id
     begin
       token = request.headers["Authorization"]
-      decoded_array = JWT.decode(token, hmac_secret, true, { algorithm: 'HS256' })
+      decoded_array = JWT.decode(token.split[1], hmac_secret, true, { algorithm: 'HS256' })
       payload = decoded_array.first
     rescue #JWT::VerificationError
       return nil
@@ -32,6 +30,8 @@ class ApplicationController < ActionController::Base
   def require_login
     render json: {error: 'Unauthorized'}, status: :unauthorized if !client_has_valid_token?
   end
+
+  protected
 
   def update_allowed_parameters
     devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:name, :email, :password, :password_confirmation) }

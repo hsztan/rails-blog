@@ -3,6 +3,11 @@ class PostsController < ApplicationController
   POSTS_PER_PAGE = 2
 
   def index
+    if current_user_id
+      puts 'You made it'
+      render json: { posts: Post.all }, status: :ok
+      return
+    end
     @page = params.fetch(:page, 0).to_i
     @page = 0 if @page.negative? || @page > (Post.count / POSTS_PER_PAGE)
     @user = User.find(params[:user_id])
@@ -53,5 +58,18 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:title, :text)
+  end
+
+  private
+
+  def current_user_id
+    begin
+      token = request.headers["Authorization"]
+      decoded_array = JWT.decode(token.split[1], hmac_secret, true, { algorithm: 'HS256' })
+      payload = decoded_array.first
+    rescue #JWT::VerificationError
+      return nil
+    end
+    payload["user_id"]
   end
 end

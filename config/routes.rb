@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       post "/posts/:id/like" => "posts#like", as: :like
   end
   scope 'api' do
-    resources :users do
+    resources :users, only: [] do
       resources :posts, only: [:index] do
         resources :comments, only: [:index, :create]
       end
