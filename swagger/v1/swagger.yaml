@@ -1,0 +1,33 @@
+---
+openapi: 3.0.1
+info:
+  title: Blog Post API V1
+  version: v1
+paths:
+  "/login":
+    post:
+      summary: Login
+      tags:
+      - Login
+      parameters: []
+      responses:
+        '201':
+          description: Login Successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+servers:
+- url: http://{localhost:3000}
+  variables:
+    defaultHost:
+      default: www.example.com
